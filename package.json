@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server/server.js",
   "scripts": {
-    "server": "webpack-dev-server",
+    "mongo": "~/Downloads/mongo/bin/mongod --dbpath ~/Downloads/mongo-data",
     "webpack:pro": "webpack -p --env production",
     "start": "babel-node src/server/server.js",
     "start-watch": "nodemon --exec babel-node src/server/server.js"
