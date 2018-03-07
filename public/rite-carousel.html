@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width shrink-to-fit=no initial-scale=1">
+    <title>Write something</title>
+    <link rel="stylesheet" href="/dist/semantic.min.css">
+    <link rel="icon" type="image/png" href="/img/logo.png">
+  </head>
+
+  <body>
+
+    <div id="message"></div>
+
+
+    <br>
+
+
+    <div class="ui container">
+      <div class="ui celled horizontal link list center">
+        <div class="item"><a href="rite-group.html">Group</a></div>
+        <div class="item"><a href="rite-item.html">Item</a></div>
+        <div class="active item">Carousel</div>
+      </div>
+
+      <br>
+
+      <form onsubmit="return false" class="ui form">
+
+        <div class="field">
+          <div class="ui left fluid icon input">
+            <input id="imgSrc" type="text" name="imgSrc" placeholder="ImageSrc">
+            <i class="file image outline icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left fluid icon input">
+            <input id="href" type="text" name="href" placeholder="href">
+            <i class="external link alternate icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Group Title</label>
+          <input id="groupTitle" type="text" name="groupTitle" placeholder="Group Title">
+        </div>
+
+        <div class="field">
+          <label>Title</label>
+          <input id="title" type="text" name="title" placeholder="Title">
+        </div>
+
+        <div class="field">
+          <label>Description</label>
+          <textarea id="description" name="description" rows="2"></textarea>
+        </div>
+
+
+        <button id="submit" class="ui submit positive button">Submit</button>
+        <button id="clear" class="ui right floated negative button">Clear</button>
+
+      </form>
+    </div>
+
+    <br><br>
+    <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
+    <script src="/dist/semantic.min.js"></script>
+    <script>
+
+$('.ui.selection.dropdown').dropdown();
+
+var imgSrc = document.getElementById('imgSrc');
+var href = document.getElementById('href');
+var title = document.getElementById('title');
+var groupTitle = document.getElementById('groupTitle');
+var description = document.getElementById('description');
+var message = document.getElementById('message');
+
+function clear() {
+  imgSrc.value = '';
+  href.value = '';
+  groupTitle.value = '';
+  description.value = '';
+  title.value = '';
+  message.innerHTML = '';
+}
+
+document.getElementById('submit').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  var data = {
+    appType: 'carousel',
+    imgSrc: imgSrc.value,
+    href: href.value,
+    title: title.value,
+    groupTitle: groupTitle.value,
+    description: description.value,
+    message: message.value
+  };
+
+  fetch('http://www.oopsdog.com/data/rite/carousel', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    })
+  }).then((res) => {
+    if (res.ok) {
+      clear();
+      message.innerHTML = "<div class=\"ui green message\">Message Sent</div>";
+    }
+  });
+})
+
+
+    </script>
+  </body>
+
+</html>

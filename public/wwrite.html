@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width shrink-to-fit=no initial-scale=1">
+    <title>Write something</title>
+    <link rel="stylesheet" href="/dist/semantic.min.css">
+  </head>
+
+  <body>
+
+    <br>
+
+    <div class="ui container">
+      <div class="ui celled horizontal link list center">
+        <div class="active item">Group</div>
+        <div class="item">Item</div>
+        <div class="item">Carousel</div>
+      </div>
+
+      <br>
+
+      <form class="ui form">
+        <div class="field">
+          <label>Group Title</label>
+          <input type="text" name="groupTitle" placeholder="Group Title">
+        </div>
+
+        <div class="fields">
+          <div class="ten wide field">
+            <label>Icon</label>
+            <input type="text" name="icon" placeholder="http://xx or /img/xx">
+          </div>
+          <div class="six wide field">
+            <label>Default Number of shown</label>
+            <input type="text" name="nShow" placeholder="6">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Group Description</label>
+          <textarea name="description" rows="2"></textarea>
+        </div>
+
+        <div class="field">
+          <label>App Selection</label>
+          <div class="ui selection dropdown">
+            <input type="hidden" name="appType">
+            <i class="dropdown icon"></i>
+            <div class="default text">App</div>
+            <div class="menu">
+              <div class="item" data-value="article">Article</div>
+              <div class="item" data-value="image">Image</div>
+              <div class="item" data-value="video">Video</div>
+              <div class="item" data-value="game">Game</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="ui submit positive button">Submit</button>
+        <button class="ui right floated negative button">Clear</button>
+
+      </form>
+
+
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div class="ui container">
+      <div class="ui celled horizontal link list center">
+        <div class="item">Group</div>
+        <div class="active item">Item</div>
+        <div class="item">Carousel</div>
+      </div>
+
+      <br>
+
+
+      <form class="ui form">
+        <div class="fields">
+          <div class="four wide field">
+            <label>App</label>
+            <div class="ui selection dropdown">
+              <input type="hidden" name="appType">
+              <i class="dropdown icon"></i>
+              <div class="default text">App</div>
+              <div class="menu">
+                <div class="item" data-value="article">Article</div>
+                <div class="item" data-value="image">Image</div>
+                <div class="item" data-value="video">Video</div>
+                <div class="item" data-value="game">Game</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="eight wide field">
+            <label>Group</label>
+            <div class="ui selection dropdown">
+              <input type="hidden" name="groupTitle">
+              <i class="dropdown icon"></i>
+              <div class="default text">Group</div>
+              <div class="menu">
+                <div class="item" data-value="0">First title</div>
+                <div class="item" data-value="1">Second title</div>
+                <div class="item" data-value="2">Third title</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="four wide field">
+            <label>Author</label>
+            <input type="text" name="author" placeholder="author">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left fluid icon input">
+            <input type="text" name="imgSrc" placeholder="ImageSrc">
+            <i class="file image outline icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left fluid icon input">
+            <input type="text" name="videoSrc" placeholder="VideoSrc">
+            <i class="play circle icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left fluid icon input">
+            <input type="text" name="appSrc" placeholder="AppSrc">
+            <i class="adn icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Title</label>
+          <input type="text" name="title" placeholder="Title">
+        </div>
+
+        <div class="field">
+          <label>Description</label>
+          <textarea name="description" rows="2"></textarea>
+        </div>
+
+        <div class="field">
+          <label>TextSrc</label>
+          <textarea name="textSrc"></textarea>
+        </div>
+
+
+        <button class="ui submit positive button">Submit</button>
+        <button class="ui right floated negative button">Clear</button>
+
+      </form>
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div class="ui container">
+      <div class="ui celled horizontal link list center">
+        <div class="item">Group</div>
+        <div class="item">Item</div>
+        <div class="active item">Carousel</div>
+      </div>
+
+      <br>
+
+      <form class="ui form">
+
+        <div class="field">
+          <div class="ui left fluid icon input">
+            <input type="text" name="imgSrc" placeholder="ImageSrc">
+            <i class="file image outline icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left fluid icon input">
+            <input type="text" name="href" placeholder="href">
+            <i class="external link alternate icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Group Title</label>
+          <input type="text" name="groupTitle" placeholder="Group Title">
+        </div>
+
+        <div class="field">
+          <label>Title</label>
+          <input type="text" name="title" placeholder="Title">
+        </div>
+
+        <div class="field">
+          <label>Description</label>
+          <textarea name="description" rows="2"></textarea>
+        </div>
+
+
+        <button class="ui submit positive button">Submit</button>
+        <button class="ui right floated negative button">Clear</button>
+
+      </form>
+    </div>
+
+    <br><br>
+    <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
+    <script src="/dist/semantic.min.js"></script>
+    <script>
+$('.ui.selection.dropdown').dropdown();
+    </script>
+  </body>
+
+</html>

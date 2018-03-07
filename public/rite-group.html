@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width shrink-to-fit=no initial-scale=1">
+    <title>Write something</title>
+    <link rel="stylesheet" href="/dist/semantic.min.css">
+    <link rel="icon" type="image/png" href="/img/logo.png">
+  </head>
+
+  <body>
+
+    <div id="message"></div>
+
+    <br>
+
+    <div class="ui container">
+      <div class="ui celled horizontal link list center">
+        <div class="active item">Group</div>
+        <div class="item"><a href="rite-item.html">Item</a></div>
+        <div class="item"><a href="rite-carousel.html">Carousel</a></div>
+      </div>
+
+      <br>
+
+
+      <form method='post' action="/" onsubmit="return false" class="ui form">
+        <div class="field">
+          <label>Group Title</label>
+          <input id="groupTitle" type="text" name="groupTitle" placeholder="Group Title">
+        </div>
+
+        <div class="fields">
+          <div class="ten wide field">
+            <label>Icon</label>
+            <input id="icon" type="text" name="icon" placeholder="http://xx or /img/xx">
+          </div>
+          <div class="six wide field">
+            <label>Default Number of shown</label>
+            <input id="nShow" type="text" name="nShow" placeholder="6">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Group Description</label>
+          <textarea id="description" name="description" rows="2"></textarea>
+        </div>
+
+        <div class="field">
+          <label>App Selection</label>
+          <div class="ui selection dropdown">
+            <input id="appType" type="hidden" name="appType">
+            <i class="dropdown icon"></i>
+            <div class="default text">App</div>
+            <div class="menu">
+              <div class="item" data-value="article">Article</div>
+              <div class="item" data-value="image">Image</div>
+              <div class="item" data-value="video">Video</div>
+              <div class="item" data-value="game">Game</div>
+            </div>
+          </div>
+        </div>
+
+        <button id="submit" class="ui submit positive button">Submit</button>
+        <button id="clear" class="ui right floated negative button">Clear</button>
+
+      </form>
+
+
+    </div>
+
+    <br><br>
+    <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
+    <script src="/dist/semantic.min.js"></script>
+    <script>
+
+
+
+
+
+$('.ui.selection.dropdown').dropdown();
+
+var groupTitle = document.getElementById('groupTitle');
+var icon = document.getElementById('icon');
+var nShow = document.getElementById('nShow');
+var description = document.getElementById('description');
+var appType = document.getElementById('appType');
+
+document.getElementById('clear').addEventListener('click', function(e) {
+  e.preventDefault();
+  groupTitle.value = '';
+  icon.value = '';
+  nShow.value = '';
+  description.value = '';
+  appType.value = '';
+
+  document.getElementById('message').innerHTML = "";
+});
+
+
+document.getElementById('submit').addEventListener('click', function (e) {
+
+  var data = {
+    groupTitle: groupTitle.value,
+    icon: icon.value,
+    nShow: parseInt(nShow.value) || 6,
+    description: description.value,
+    appType: appType.value
+  };
+
+  console.log(data);
+
+  fetch('http://www.oopsdog.com/data/rite/group', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    })
+  }).then((res) => {
+    if (res.ok) {
+      groupTitle.value = '';
+      icon.value = '';
+      nShow.value = '';
+      description.value = '';
+      appType.value = '';
+
+      document.getElementById('message').innerHTML = "<div class=\"ui green message\">Message Sent</div>";
+    }
+  });
+
+});
+
+
+
+    </script>
+  </body>
+
+</html>

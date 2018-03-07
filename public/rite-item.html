@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width shrink-to-fit=no initial-scale=1">
+    <title>Write something</title>
+    <link rel="stylesheet" href="/dist/semantic.min.css">
+    <link rel="icon" type="image/png" href="/img/logo.png">
+  </head>
+
+  <body>
+
+    <div id="message"></div>
+
+    <br>
+
+    <div class="ui container">
+      <div class="ui celled horizontal link list center">
+        <div class="item"><a href="rite-group.html">Group</a></div>
+        <div class="active item">Item</div>
+        <div class="item"><a href="rite-carousel.html">Carousel</a></div>
+      </div>
+
+      <br>
+
+      <form onsubmit="return false" class="ui form">
+        <div class="fields">
+          <div class="four wide field">
+            <label>App</label>
+            <div class="ui selection dropdown">
+              <input id="appType" type="hidden" name="appType">
+              <i class="dropdown icon"></i>
+              <div class="default text">App</div>
+              <div class="menu">
+                <div class="item" data-value="article">Article</div>
+                <div class="item" data-value="image">Image</div>
+                <div class="item" data-value="video">Video</div>
+                <div class="item" data-value="game">Game</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="eight wide field">
+            <label>Group Index</label>
+            <input id="groupIndex" type="text" name="groupIndex" placeholder="group index">
+          </div>
+
+          <div class="four wide field">
+            <label>Author</label>
+            <input id="author" type="text" name="author" placeholder="author">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left fluid icon input">
+            <input id="imgSrc" type="text" name="imgSrc" placeholder="ImageSrc">
+            <i class="file image outline icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left fluid icon input">
+            <input id="videoSrc" type="text" name="videoSrc" placeholder="VideoSrc">
+            <i class="play circle icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="ui left fluid icon input">
+            <input id="appSrc" type="text" name="appSrc" placeholder="AppSrc">
+            <i class="adn icon"></i>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Title</label>
+          <input id="title" type="text" name="title" placeholder="Title">
+        </div>
+
+        <div class="field">
+          <label>Description</label>
+          <textarea id="description" name="description" rows="2"></textarea>
+        </div>
+
+        <div class="field">
+          <label>TextSrc</label>
+          <textarea id="textSrc" name="textSrc"></textarea>
+        </div>
+
+
+        <button id="submit" class="ui submit positive button">Submit</button>
+        <button id="clear" class="ui right floated negative button">Clear</button>
+
+      </form>
+    </div>
+
+    <br><br>
+    <script src="http://semantic-ui.com/javascript/library/jquery.min.js"></script>
+    <script src="/dist/semantic.min.js"></script>
+    <script>
+
+
+$('.ui.selection.dropdown').dropdown();
+
+
+
+$('.ui.selection.dropdown').dropdown();
+
+var appType = document.getElementById('appType');
+var groupIndex = document.getElementById('groupIndex');
+var author = document.getElementById('author');
+var imgSrc = document.getElementById('imgSrc');
+var videoSrc = document.getElementById('videoSrc');
+var appSrc = document.getElementById('appSrc');
+var title = document.getElementById('title');
+var description = document.getElementById('description');
+var textSrc = document.getElementById('textSrc');
+var message = document.getElementById('message');
+
+function clear() {
+  appType.value = '';
+  groupIndex.value = '';
+  author.value = '';
+  imgSrc.value = '';
+  videoSrc.value = '';
+  appSrc.value = '';
+  title.value = '';
+  description.value = '';
+  textSrc.value = '';
+  message.innerHTML = "";
+}
+
+document.getElementById('clear').addEventListener('click', function(e) {
+  e.preventDefault();
+  clear();
+});
+
+
+document.getElementById('submit').addEventListener('click', function (e) {
+
+  var data = {
+    appType: appType.value,
+    groupIndex: parseInt(groupIndex.value),
+    author: author.value,
+    imgSrc: imgSrc.value,
+    videoSrc: videoSrc.value,
+    appSrc: appSrc.value,
+    title: title.value,
+    description: description.value,
+    textSrc: textSrc.value
+  };
+
+  console.log(data);
+
+  fetch('http://www.oopsdog.com/data/rite/item', {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    })
+  }).then((res) => {
+    console.log(res);
+    if (res.ok) {
+
+      clear();
+      message.innerHTML = "<div class=\"ui green message\">Message Sent</div>";
+    }
+  });
+
+});
+
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+
+</html>
